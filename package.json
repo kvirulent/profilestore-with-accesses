@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/profilestore-with-accesses",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "roblox-ts bindings for profilestore with an added signal for accesses to the data table",
   "repository":{"url": "https://github.com/kvirulent/profilestore-with-accesses"},
   "main": "out/init.lua",
