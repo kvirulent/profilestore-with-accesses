@@ -748,7 +748,6 @@ local function SaveProfileAsync(profile, is_ending_session, is_overwriting, last
 					-- Save profile data:
 
 					latest_data.Data = profile._t
-					print(latest_data.Data)
 					latest_data.RobloxMetaData = profile.RobloxMetaData
 					latest_data.UserIds = profile.UserIds
 
@@ -1010,13 +1009,11 @@ function Profile.New(raw_data, key_info, profile_store, key, is_mock, session_to
 	setmetatable(data, {
 		__index = function(t,k) 
 			accessed:Fire()
-			print("adsfsfh")
 			return _t[k]
 		end,
 
 		__newindex = function(t,k,v)
 			accessed:Fire()
-			print("adsfsfh")
 			_t[k] = v
 		end
 	})
