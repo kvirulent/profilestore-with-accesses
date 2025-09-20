@@ -1013,8 +1013,8 @@ function Profile.New(raw_data, key_info, profile_store, key, is_mock, session_to
 		end,
 
 		__newindex = function(t,k,v)
-			accessed:Fire()
 			_t[k] = v
+			accessed:Fire(_t)
 		end
 	})
 
