@@ -1001,6 +1001,16 @@ export type ProfileStoreModule = {
 local Profile = {}
 Profile.__index = Profile
 
+function MakeReadOnly(table) 
+	return setmetatable({}, {
+		__index = table,
+		__newindex = function(_,k,v)
+			error(string.format("Attempt to modify read-only table at key '%s'", tostring(k)))
+		end,
+		__metatable = false
+	})
+end
+
 function Profile.New(raw_data, key_info, profile_store, key, is_mock, session_token)
 	local data = {}
 	local _t = raw_data.Data or {};
@@ -1008,13 +1018,13 @@ function Profile.New(raw_data, key_info, profile_store, key, is_mock, session_to
 
 	setmetatable(data, {
 		__index = function(t,k) 
-			accessed:Fire()
+			accessed:Fire(MakeReadOnly(DeepCopyTable(_t)))
 			return _t[k]
 		end,
 
 		__newindex = function(t,k,v)
 			_t[k] = v
-			accessed:Fire(_t)
+			accessed:Fire(MakeReadOnly(DeepCopyTable(_t)))
 		end
 	})
 

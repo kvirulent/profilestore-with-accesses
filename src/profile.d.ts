@@ -30,7 +30,7 @@ export interface Profile<Template extends object, RobloxMetadata extends object 
 	/**
 	 * Fires on indexes to `Data`
 	 */
-	readonly accessed: Signal<[data: Template, key: string | number | symbol]>;
+	readonly accessed: Signal<[data: Readonly<Template>, key: Readonly<string | number | symbol>]>;
 	/**
 	 * This is a version of Profile.Data that has been successfully stored to the DataStore.
 	 *
