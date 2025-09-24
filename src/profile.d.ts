@@ -17,8 +17,8 @@ export interface Profile<Template extends object, RobloxMetadata extends object 
 	 * Proxy data table
 	 */
 	Data: {
-		__index: () => undefined,
-		__newindex: () => undefined,
+		__index: () => unknown,
+		__newindex: () => null,
 		[key: string | number | symbol]: unknown,
 	};
 
